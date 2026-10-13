@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Begrippen oefenen — demo</title>
+<meta name="description" content="Werkende demonstratie van een begrippendrill met voorlezen, voorbeeldantwoord en automatische herhaling. Eigen voorbeeldinhoud, geen cursusmateriaal.">
+<meta name="author" content="Serge Hanssens — SHiftEDMake">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#ff6b6b; --teal:#4ecdc4; --amber:#feca57; --purple:#754ea6; --navy:#2c3e50;
+  --bg:#f6f7f9; --kaart:#ffffff; --tekst:#1d2733; --zacht:#5a6b7d; --lijn:#dde3ea;
+  --goed:#157f5f; --goed-bg:#e7f6f0; --hulp:#8a5a00; --hulp-bg:#fff6e0; --focus:#754ea6;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-thema="licht"]){
+    --bg:#131920; --kaart:#1b232d; --tekst:#eef3f8; --zacht:#a9b7c6; --lijn:#2d3945;
+    --goed:#5ddcb0; --goed-bg:#11322a; --hulp:#ffcd6b; --hulp-bg:#33280d; --focus:#b79bea;
+  }
+}
+:root[data-thema="donker"]{
+  --bg:#131920; --kaart:#1b232d; --tekst:#eef3f8; --zacht:#a9b7c6; --lijn:#2d3945;
+  --goed:#5ddcb0; --goed-bg:#11322a; --hulp:#ffcd6b; --hulp-bg:#33280d; --focus:#b79bea;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--tekst);
+  font-family:"Atkinson Hyperlegible", "Verdana", system-ui, sans-serif;
+  font-size:clamp(17px,1.05rem + .2vw,20px); line-height:1.65;
+}
+body[data-groot="ja"]{font-size:23px; line-height:1.8}
+.omhulsel{max-width:62rem; margin:0 auto; padding:0 16px}
+a{color:var(--purple)} :root[data-thema="donker"] a, @media (prefers-color-scheme:dark){a{color:var(--focus)}}
+:focus-visible{outline:3px solid var(--focus); outline-offset:3px; border-radius:6px}
+header.kop{background:var(--navy); color:#fff; padding:22px 0 26px}
+header.kop h1{margin:0 0 6px; font-size:clamp(1.4rem,1.2rem + 1.1vw,2rem); line-height:1.25}
+header.kop p{margin:0; color:#cfd9e4; max-width:48rem}
+.terug{display:inline-block; color:#cfd9e4; text-decoration:none; border-bottom:1px solid #5c6f82; margin-bottom:14px; font-size:.9em}
+.terug:hover,.terug:focus-visible{color:#fff}
+.balk{display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:14px 0; border-bottom:1px solid var(--lijn)}
+button{font:inherit; cursor:pointer}
+.knop{background:var(--kaart); color:var(--tekst); border:2px solid var(--lijn); border-radius:999px; padding:9px 16px; min-height:44px}
+.knop:hover{border-color:var(--focus)}
+.knop[aria-pressed="true"]{background:var(--focus); border-color:var(--focus); color:#fff}
+.knop.hoofd{background:var(--purple); border-color:var(--purple); color:#fff; font-weight:700}
+.knop.hoofd:hover{filter:brightness(1.1)}
+main{padding:22px 0 60px}
+.kaart{background:var(--kaart); border:1px solid var(--lijn); border-radius:var(--radius); padding:20px; margin:18px 0; box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.uitleg{border-left:5px solid var(--teal)}
+.voortgang{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:.92em; color:var(--zacht); margin-bottom:6px}
+.staaf{height:10px; background:var(--lijn); border-radius:999px; overflow:hidden}
+.staaf i{display:block; height:100%; background:var(--teal); width:0; transition:width .3s ease}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+.vraagkop{display:flex; gap:12px; align-items:flex-start; justify-content:space-between}
+.vraagkop h2{margin:0 0 4px; font-size:1.45rem; line-height:1.3}
+.label{display:inline-block; font-size:.74em; letter-spacing:.06em; text-transform:uppercase; color:var(--zacht); border:1px solid var(--lijn); border-radius:999px; padding:2px 10px; margin-bottom:10px}
+.luid{flex:0 0 auto; background:transparent; border:2px solid var(--lijn); border-radius:50%; width:48px; height:48px; font-size:1.2rem; line-height:1; display:grid; place-items:center}
+.luid:hover{border-color:var(--focus)}
+textarea{width:100%; min-height:110px; font:inherit; color:var(--tekst); background:var(--bg); border:2px solid var(--lijn); border-radius:10px; padding:12px; resize:vertical}
+.rij{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+.oordeel{margin-top:16px; border-radius:10px; padding:14px 16px; border:1px solid}
+.oordeel.goed{background:var(--goed-bg); border-color:var(--goed); color:var(--goed)}
+.oordeel.hulp{background:var(--hulp-bg); border-color:var(--hulp); color:var(--hulp)}
+.oordeel p{margin:.2em 0}
+.voorbeeld{margin-top:14px; background:var(--bg); border:2px dashed var(--lijn); border-radius:10px; padding:14px 16px}
+.voorbeeld h3{margin:0 0 6px; font-size:1rem; text-transform:uppercase; letter-spacing:.05em; color:var(--zacht)}
+.klaar{text-align:center; padding:28px 16px}
+.klaar h2{margin-top:0}
+ul.net{margin:.4em 0; padding-left:1.2em} ul.net li{margin:.3em 0}
+footer{border-top:1px solid var(--lijn); padding:22px 0 40px; color:var(--zacht); font-size:.92em}
+.weg{display:none}
+</style>
+</head>
+<body>
+<header class="kop"><div class="omhulsel">
+  <a class="terug" href="../index.html">← Terug naar het overzicht</a>
+  <h1>Begrippen oefenen — werkende demo</h1>
+  <p>Zo werkt de oefenmodule die in de studie-apps zit. De inhoud hier is zelf geschreven voorbeeldinhoud over elektrische grootheden — geen cursusmateriaal van een uitgeverij.</p>
+</div></header>
+
+<div class="omhulsel">
+  <div class="balk" role="group" aria-label="Weergave-instellingen">
+    <button class="knop" id="btn-groot" aria-pressed="false">Grotere letters</button>
+    <button class="knop" id="btn-thema">Donker / licht</button>
+    <button class="knop" id="btn-stop">Stop met voorlezen</button>
+    <span id="stem-status" style="color:var(--zacht); font-size:.88em"></span>
+  </div>
+</div>
+
+<main class="omhulsel">
+  <div class="kaart uitleg">
+    <div class="vraagkop">
+      <div>
+        <h2 style="font-size:1.15rem">Wat deze demo laat zien</h2>
+        <ul class="net">
+          <li>Elke tekst kan voorgelezen worden met een Vlaamse stem.</li>
+          <li>Je typt zelf een antwoord; pas daarna krijg je feedback.</li>
+          <li>Een uitgewerkt voorbeeldantwoord staat altijd klaar — ook als je het juist had.</li>
+          <li>Wie het voorbeeld eerst bekijkt, krijgt het begrip later opnieuw. Hulp telt als hulp.</li>
+          <li>Je voortgang blijft bewaard in deze browser, zonder account.</li>
+        </ul>
+      </div>
+      <button class="luid" data-lees="#uitleg-tekst" aria-label="Lees deze uitleg voor">🔊</button>
+    </div>
+    <span id="uitleg-tekst" class="weg">Deze demo laat zien hoe de begrippenoefening werkt. Elke tekst kan voorgelezen worden met een Vlaamse stem. Je typt zelf een antwoord en krijgt pas daarna feedback. Een uitgewerkt voorbeeldantwoord staat altijd klaar, ook als je het juist had. Wie het voorbeeld eerst bekijkt, krijgt het begrip later opnieuw, want hulp telt als hulp. Je voortgang blijft bewaard in deze browser, zonder account.</span>
+  </div>
+
+  <div class="kaart" id="paneel">
+    <div class="voortgang"><span id="teller">Begrip 1 van 10</span><span id="herhaalteller"></span></div>
+    <div class="staaf"><i id="staaf"></i></div>
+
+    <div id="oefening" style="margin-top:20px">
+      <span class="label" id="categorie">Basis</span>
+      <div class="vraagkop">
+        <h2 id="woord">—</h2>
+        <button class="luid" id="lees-woord" aria-label="Lees de vraag voor">🔊</button>
+      </div>
+      <p id="vraagzin" style="color:var(--zacht); margin:.2em 0 1em"></p>
+
+      <label for="antwoord" style="font-weight:700">Jouw antwoord</label>
+      <textarea id="antwoord" placeholder="Schrijf in je eigen woorden wat dit betekent."></textarea>
+
+      <div class="rij">
+        <button class="knop hoofd" id="btn-na">Nakijken</button>
+        <button class="knop" id="btn-voorbeeld">Toon voorbeeldantwoord</button>
+        <button class="knop" id="btn-over" hidden>Volgende begrip</button>
+      </div>
+
+      <div id="oordeel" class="oordeel" hidden aria-live="polite"></div>
+
+      <div id="voorbeeld" class="voorbeeld" hidden>
+        <div class="vraagkop">
+          <h3>Voorbeeldantwoord</h3>
+          <button class="luid" id="lees-voorbeeld" aria-label="Lees het voorbeeldantwoord voor">🔊</button>
+        </div>
+        <p id="voorbeeldtekst"></p>
+        <div class="rij">
+          <button class="knop" id="btn-wist">Ik wist het toch — reken het als juist</button>
+          <button class="knop" id="btn-nogmaals">Zet dit begrip nog eens terug</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="klaar" class="klaar" hidden>
+      <h2>Je bent rond.</h2>
+      <p id="klaartekst"></p>
+      <button class="knop hoofd" id="btn-opnieuw">Opnieuw beginnen</button>
+    </div>
+  </div>
+
+  <div class="kaart uitleg">
+    <h2 style="font-size:1.1rem; margin-top:0">Wat hier bewust níét gebeurt</h2>
+    <ul class="net">
+      <li>Er gaat geen enkel gegeven naar een server. Alles draait in deze pagina.</li>
+      <li>Er is geen AI actief tijdens het oefenen. Het nakijken gebeurt met een vaste woordenlijst per begrip, door de maker ingesteld.</li>
+      <li>De oefening geeft geen punten en vervangt geen evaluatie door een leerkracht.</li>
+    </ul>
+  </div>
+</main>
+
+<footer class="omhulsel">
+  <p>© 2026 Serge Hanssens — SHiftEDMake. Voorbeeldinhoud en code onder MIT-licentie.</p>
+</footer>
+
+<script>
+"use strict";
+const BEGRIPPEN = [
+  {w:"spanning", c:"Basis", vraag:"Wat is spanning, en waarin wordt ze uitgedrukt?",
+   sleutels:["verschil","energie","volt"],
+   voorbeeld:"Spanning is het verschil in elektrische energie tussen twee punten. Dat verschil duwt de lading door de kring. Je drukt spanning uit in volt (V)."},
+  {w:"stroomsterkte", c:"Basis", vraag:"Wat is stroomsterkte, en waarin wordt ze uitgedrukt?",
+   sleutels:["lading","per seconde","ampère","ampere"],
+   voorbeeld:"Stroomsterkte is de hoeveelheid lading die per seconde door een doorsnede van de geleider gaat. Je drukt ze uit in ampère (A)."},
+  {w:"weerstand", c:"Basis", vraag:"Wat doet een weerstand in een kring?",
+   sleutels:["tegenwerkt","beperkt","ohm","moeilijk"],
+   voorbeeld:"Een weerstand werkt de stroom tegen. Bij dezelfde spanning loopt er minder stroom naarmate de weerstand groter is. Je drukt weerstand uit in ohm (Ω)."},
+  {w:"wet van Ohm", c:"Verband", vraag:"Welk verband legt de wet van Ohm?",
+   sleutels:["u = r","u=r","spanning","stroom","weerstand"],
+   voorbeeld:"De wet van Ohm legt het verband tussen spanning, stroomsterkte en weerstand: U = R · I. Ken je er twee van, dan bereken je de derde."},
+  {w:"vermogen", c:"Verband", vraag:"Wat zegt het vermogen van een toestel?",
+   sleutels:["per seconde","energie","watt","omzet"],
+   voorbeeld:"Het vermogen zegt hoeveel energie een toestel per seconde omzet. Je drukt het uit in watt (W). In een gelijkstroomkring geldt P = U · I."},
+  {w:"serieschakeling", c:"Schakeling", vraag:"Wat is kenmerkend voor een serieschakeling?",
+   sleutels:["zelfde stroom","dezelfde stroom","na elkaar","één weg","een weg"],
+   voorbeeld:"In een serieschakeling liggen de toestellen na elkaar op één stroomweg. Door elk toestel loopt dezelfde stroom, en de spanningen over de toestellen tellen samen op tot de bronspanning."},
+  {w:"parallelschakeling", c:"Schakeling", vraag:"Wat is kenmerkend voor een parallelschakeling?",
+   sleutels:["zelfde spanning","dezelfde spanning","takken","naast elkaar","splitst"],
+   voorbeeld:"In een parallelschakeling staan de toestellen naast elkaar tussen dezelfde twee punten. Over elk toestel staat dezelfde spanning, en de stroom splitst zich over de takken."},
+  {w:"kortsluiting", c:"Veiligheid", vraag:"Wat gebeurt er bij een kortsluiting?",
+   sleutels:["weerstand","klein","grote stroom","hoge stroom","warmte"],
+   voorbeeld:"Bij een kortsluiting krijgt de stroom een weg met bijna geen weerstand. De stroom wordt dan heel groot, de geleiders warmen snel op en er ontstaat brandgevaar. Daarom beveiligt een zekering of automaat de kring."},
+  {w:"aarding", c:"Veiligheid", vraag:"Waarvoor dient de aarding van een toestel?",
+   sleutels:["foutstroom","afvoer","veilig","metalen","behuizing"],
+   voorbeeld:"De aarding verbindt metalen delen die je kunt aanraken met de aarde. Komt er door een defect spanning op de behuizing, dan vloeit die foutstroom weg langs de aarding en schakelt de beveiliging uit, zodat jij geen stroom door je lichaam krijgt."},
+  {w:"rendement", c:"Verband", vraag:"Wat bedoelen we met het rendement van een toestel?",
+   sleutels:["nuttig","verhouding","toegevoerd","procent","verlies"],
+   voorbeeld:"Het rendement is de verhouding tussen het nuttige vermogen dat eruit komt en het toegevoerde vermogen dat erin gaat. Het verschil gaat verloren, meestal als warmte. Je schrijft het als een getal tussen 0 en 1 of als een percentage."}
+];
+
+const KEY = "shiftedmake_demo_begrippen_v1";
+const $ = s => document.querySelector(s);
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9= ·.]/g," ").replace(/\s+/g," ").trim();
+
+let rij = [], i = 0, hulpGebruikt = false, beoordeeld = false;
+let stats = {juist:0, methulp:0, herhaal:0};
+
+function laad(){
+  try{ const r = JSON.parse(localStorage.getItem(KEY)||"null"); if(r && r.rij) return r; }catch(e){}
+  return null;
+}
+function bewaar(){
+  try{ localStorage.setItem(KEY, JSON.stringify({rij,i,stats})); }catch(e){}
+}
+function schud(a){ a=a.slice(); for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1)); [a[k],a[j]]=[a[j],a[k]];} return a; }
+
+function start(vers){
+  const bewaard = vers ? null : laad();
+  if(bewaard){ rij = bewaard.rij; i = bewaard.i; stats = bewaard.stats; }
+  else { rij = schud(BEGRIPPEN.map((_,n)=>n)); i = 0; stats = {juist:0, methulp:0, herhaal:0}; }
+  toon();
+}
+
+function toon(){
+  $("#klaar").hidden = true; $("#oefening").hidden = false;
+  if(i >= rij.length){ return rond(); }
+  const b = BEGRIPPEN[rij[i]];
+  hulpGebruikt = false; beoordeeld = false;
+  $("#categorie").textContent = b.c;
+  $("#woord").textContent = b.w;
+  $("#vraagzin").textContent = b.vraag;
+  $("#antwoord").value = ""; $("#antwoord").disabled = false;
+  $("#oordeel").hidden = true; $("#voorbeeld").hidden = true;
+  $("#btn-over").hidden = true; $("#btn-na").hidden = false;
+  $("#btn-voorbeeld").textContent = "Toon voorbeeldantwoord";
+  $("#voorbeeldtekst").textContent = b.voorbeeld;
+  $("#teller").textContent = `Begrip ${i+1} van ${rij.length}`;
+  $("#herhaalteller").textContent = stats.herhaal ? `${stats.herhaal} keer teruggezet om te herhalen` : "";
+  $("#staaf").style.width = Math.round(i/rij.length*100) + "%";
+  bewaar();
+}
+
+function nakijken(){
+  const b = BEGRIPPEN[rij[i]];
+  const tekst = norm($("#antwoord").value);
+  if(tekst.length < 3){
+    melding("hulp", "Schrijf eerst zelf iets. Ook een halve zin telt — daarna kijken we na.");
+    return;
+  }
+  const raak = b.sleutels.filter(k => tekst.includes(norm(k)));
+  const goed = raak.length >= 2 || (b.sleutels.length < 3 && raak.length >= 1);
+  beoordeeld = true;
+  $("#btn-na").hidden = true; $("#btn-over").hidden = false; $("#antwoord").disabled = true;
+  $("#voorbeeld").hidden = false;
+  if(goed && !hulpGebruikt){
+    stats.juist++;
+    melding("goed", "Dat klopt. Lees het voorbeeldantwoord er toch even bij — dan zie je hoe je het nog korter kunt zeggen.");
+  } else if(goed && hulpGebruikt){
+    stats.methulp++;
+    melding("hulp", "Juist, maar je hebt het voorbeeld er eerst bij genomen. Dit begrip komt straks nog een keer terug.");
+    terugzetten();
+  } else {
+    melding("hulp", "Nog niet volledig. Dit is een vakbegrip, dus het gaat om de juiste woorden, niet om jouw manier van schrijven. Lees het voorbeeld, zeg het daarna hardop in je eigen woorden.");
+    terugzetten();
+  }
+  bewaar();
+}
+
+function terugzetten(){
+  const plek = Math.min(rij.length, i + 3 + Math.floor(Math.random()*2));
+  rij.splice(plek, 0, rij[i]);
+  stats.herhaal++;
+  $("#herhaalteller").textContent = `${stats.herhaal} keer teruggezet om te herhalen`;
+}
+
+function melding(soort, tekst){
+  const o = $("#oordeel");
+  o.className = "oordeel " + soort;
+  o.textContent = tekst;
+  o.hidden = false;
+}
+
+function rond(){
+  $("#oefening").hidden = true; $("#klaar").hidden = false;
+  $("#staaf").style.width = "100%";
+  $("#teller").textContent = "Alle begrippen gehad";
+  $("#herhaalteller").textContent = "";
+  $("#klaartekst").textContent =
+    `Zelfstandig juist: ${stats.juist}. Juist met hulp van het voorbeeld: ${stats.methulp}. ` +
+    `Begrippen die daardoor opnieuw aan bod kwamen: ${stats.herhaal}. ` +
+    `Alleen de eerste groep telt als "ken ik".`;
+  try{ localStorage.removeItem(KEY); }catch(e){}
+}
+
+/* ---- voorlezen ---- */
+let stem = null;
+function kiesStem(){
+  const lijst = speechSynthesis.getVoices();
+  stem = lijst.find(v=>v.lang==="nl-BE") || lijst.find(v=>v.lang && v.lang.startsWith("nl")) || null;
+  $("#stem-status").textContent = stem ? ("Voorleesstem: " + stem.name) : "Geen Nederlandse stem gevonden in deze browser.";
+}
+function lees(tekst){
+  if(!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(tekst);
+  u.lang = "nl-BE"; u.rate = 0.95;
+  if(stem) u.voice = stem;
+  speechSynthesis.speak(u);
+}
+if("speechSynthesis" in window){
+  kiesStem();
+  speechSynthesis.onvoiceschanged = kiesStem;
+} else {
+  $("#stem-status").textContent = "Deze browser kan geen tekst voorlezen.";
+}
+
+/* ---- bediening ---- */
+document.querySelectorAll("[data-lees]").forEach(b=>{
+  b.addEventListener("click", ()=> lees(document.querySelector(b.dataset.lees).textContent));
+});
+$("#lees-woord").addEventListener("click", ()=>{
+  const b = BEGRIPPEN[rij[i]];
+  lees(b.w + ". " + b.vraag);
+});
+$("#lees-voorbeeld").addEventListener("click", ()=> lees($("#voorbeeldtekst").textContent));
+$("#btn-stop").addEventListener("click", ()=>{ if("speechSynthesis" in window) speechSynthesis.cancel(); });
+$("#btn-na").addEventListener("click", nakijken);
+$("#btn-over").addEventListener("click", ()=>{ i++; toon(); });
+$("#btn-opnieuw").addEventListener("click", ()=> start(true));
+$("#btn-voorbeeld").addEventListener("click", ()=>{
+  const v = $("#voorbeeld");
+  if(v.hidden){
+    v.hidden = false;
+    if(!beoordeeld){
+      hulpGebruikt = true;
+      melding("hulp", "Je bekijkt het voorbeeld vóór je eigen antwoord. Dat mag, maar het telt als hulp: dit begrip komt straks opnieuw.");
+    }
+    $("#btn-voorbeeld").textContent = "Verberg voorbeeldantwoord";
+    v.scrollIntoView({block:"nearest"});
+  } else {
+    v.hidden = true;
+    $("#btn-voorbeeld").textContent = "Toon voorbeeldantwoord";
+  }
+});
+$("#btn-wist").addEventListener("click", ()=>{
+  if(!beoordeeld){ melding("hulp","Kijk eerst je eigen antwoord na."); return; }
+  melding("goed","Genoteerd als zelfcontrole. Het begrip komt toch nog één keer terug — zo weet je zeker dat het blijft zitten.");
+});
+$("#btn-nogmaals").addEventListener("click", ()=>{
+  terugzetten();
+  melding("hulp","Teruggezet. Je krijgt dit begrip straks opnieuw.");
+  bewaar();
+});
+$("#btn-groot").addEventListener("click", e=>{
+  const aan = document.body.dataset.groot === "ja";
+  document.body.dataset.groot = aan ? "nee" : "ja";
+  e.currentTarget.setAttribute("aria-pressed", String(!aan));
+});
+$("#btn-thema").addEventListener("click", ()=>{
+  const nu = document.documentElement.dataset.thema;
+  const donker = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.thema = nu ? (nu === "donker" ? "licht" : "donker") : (donker ? "licht" : "donker");
+});
+document.addEventListener("keydown", e=>{
+  if(e.key === "Enter" && (e.ctrlKey || e.metaKey)){
+    e.preventDefault();
+    if(!$("#btn-na").hidden) nakijken(); else $("#btn-over").click();
+  }
+});
+start(false);
+</script>
+</body>
+</html>

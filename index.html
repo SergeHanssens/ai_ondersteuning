@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leren met AI — toepassingen voor de klas en voor thuis</title>
+<meta name="description" content="Een overzicht van digitale leerhulpmiddelen die Serge Hanssens met AI ontwikkelde voor zijn leerlingen en voor thuis, met werkende voorbeelden, toegankelijkheidsfuncties en eerlijke beperkingen.">
+<meta name="author" content="Serge Hanssens — SHiftEDMake">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Leren met AI — toepassingen voor de klas en voor thuis">
+<meta property="og:description" content="Werkende voorbeelden van leerapps, simulaties en oefenmodules, met uitleg over toegankelijkheid en over wat AI wel en niet doet.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/shiftedmake-kubus.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/stijl.css">
+</head>
+<body>
+<a class="overslaan" href="#galerij">Ga meteen naar de voorbeelden</a>
+
+<header class="kop">
+  <div class="omhulsel kopbinnen">
+    <p class="merkplaat"><img class="merk" src="assets/img/shiftedmake-logo.png" alt="SHiftEDMake — van Droom naar Werkelijkheid" width="900" height="212"></p>
+    <div>
+      <p class="bovenkop">Leermateriaal maken met AI</p>
+      <h1>Wat ik gemaakt heb, en waarom</h1>
+      <p class="onderkop">Digitale leerhulpmiddelen voor mijn eigen lessen elektriciteit en mechanica, en voor een leerling thuis met specifieke ondersteuningsnoden. Hieronder staan dertien voorbeelden. Zes ervan kun je meteen openen en uitproberen.</p>
+      <p class="acties">
+        <a class="knop hoofd" href="#galerij">Bekijk de voorbeelden</a>
+        <a class="knop" href="demos/demo-begrippen-oefenen.html">Probeer meteen een oefening</a>
+      </p>
+    </div>
+  </div>
+</header>
+
+<nav class="kruimels" aria-label="Op deze pagina">
+  <div class="omhulsel">
+    <a href="#waarom">Waarom</a>
+    <a href="#galerij">De voorbeelden</a>
+    <a href="#noden">Ondersteuningsnoden</a>
+    <a href="#werkwijze">Mijn werkwijze</a>
+    <a href="#grenzen">Grenzen</a>
+    <a href="#meer">Meer</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="waarom" class="omhulsel vak">
+  <h2>Waarom ik hieraan begon</h2>
+  <div class="tweekolom">
+    <div>
+      <p>Ik geef elektriciteit en mechanica in de derde graad elektromechanische technieken bij GO! KTA Da Vinci in Edegem. Daarnaast maak ik leermateriaal voor mijn zoon, die schoolloopt in het buitengewoon secundair onderwijs. Dat zijn twee heel verschillende scholen en twee heel verschillende vragen, en ik hou ze op deze pagina ook uit elkaar.</p>
+      <p>Wat ze gemeen hebben: een handboek is geschreven voor de gemiddelde lezer. Wie trager leest, nieuwe woorden moeilijk onthoudt of de draad kwijtraakt in een lange tekst, komt er niet zelfstandig door. Dan blijft er maar één oplossing over — iemand die er elke avond naast gaat zitten. Dat is wat ik wilde verminderen.</p>
+    </div>
+    <div>
+      <p>Met AI kan ik lesmateriaal in een paar avonden omzetten naar iets wat een leerling alleen aankan: opgesplitst in korte sessies, met begrippen apart, met voorlezen overal en met oefeningen die feedback geven in plaats van alleen een punt. Vroeger was dat werk van maanden en deed niemand het.</p>
+      <p>Ik deel dit omdat de vraag op de schoolraad kwam wat er mogelijk is. Ik ben geen leverancier en verkoop niets. Wie het interessant vindt, mag alles vrij gebruiken; de code staat onder een open licentie.</p>
+    </div>
+  </div>
+  <div class="legende">
+    <p class="legendekop">Hoe je deze pagina leest</p>
+    <ul>
+      <li><span class="badge badge-ja">gecontroleerde functie</span> Ik heb ze zelf in de toepassing nagekeken.</li>
+      <li><span class="badge badge-mss">mogelijke inzet</span> Een plausibel verband tussen een functie en een drempel. Geen gemeten effect.</li>
+      <li><span class="badge badge-tk">nog te doen</span> Een verbetering die er nog niet is.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="galerij" class="omhulsel vak">
+  <h2>De voorbeelden</h2>
+  <p class="inleiding">Dertien toepassingen, van een hele cursus tot één oefenmodule. Zes ervan staan hier live en kun je openen; de andere volgen een handboek van een uitgeverij of bevatten overgenomen cursusbeelden, en daarvan staat alleen een schermafbeelding. Dat staat telkens bij het voorbeeld zelf.</p>
+
+  <div class="filters" id="filters">
+    <div class="filtergroep">
+      <p class="filterkop" id="k-context">Context</p>
+      <div role="group" aria-labelledby="k-context">
+        <button class="filter" data-groep="context" data-waarde="davinci">Mijn lespraktijk — KTA da Vinci</button>
+        <button class="filter" data-groep="context" data-waarde="thuis">Individuele ondersteuning thuis</button>
+        <button class="filter" data-groep="context" data-waarde="demo">Werkende demo</button>
+      </div>
+    </div>
+    <div class="filtergroep">
+      <p class="filterkop" id="k-vak">Vak</p>
+      <div role="group" aria-labelledby="k-vak"><button class="filter" data-groep="vak" data-waarde="Biologie">Biologie</button><button class="filter" data-groep="vak" data-waarde="Chemie">Chemie</button><button class="filter" data-groep="vak" data-waarde="Elektriciteit">Elektriciteit</button><button class="filter" data-groep="vak" data-waarde="Fysica">Fysica</button><button class="filter" data-groep="vak" data-waarde="Godsdienst">Godsdienst</button><button class="filter" data-groep="vak" data-waarde="Mechanica">Mechanica</button><button class="filter" data-groep="vak" data-waarde="Vakoverschrijdend">Vakoverschrijdend</button><button class="filter" data-groep="vak" data-waarde="Wiskunde">Wiskunde</button></div>
+    </div>
+    <div class="filtergroep">
+      <p class="filterkop" id="k-soort">Soort toepassing</p>
+      <div role="group" aria-labelledby="k-soort"><button class="filter" data-groep="soort" data-waarde="cursus">Leerstof doornemen</button><button class="filter" data-groep="soort" data-waarde="oefenen">Oefenen en herhalen</button><button class="filter" data-groep="soort" data-waarde="simulatie">Simulatie of visualisatie</button><button class="filter" data-groep="soort" data-waarde="toets">Proeftoets en zelfcontrole</button><button class="filter" data-groep="soort" data-waarde="overzicht">Overzicht en planning</button><button class="filter" data-groep="soort" data-waarde="uitleg">Uitleg over de aanpak</button><button class="filter" data-groep="soort" data-waarde="zelfstandig">Zelfstandig werk</button><button class="filter" data-groep="soort" data-waarde="leerkracht">Voor de leerkracht</button><button class="filter" data-groep="soort" data-waarde="demo">Werkende demo</button></div>
+    </div>
+    <div class="filtergroep">
+      <p class="filterkop" id="k-noden">Waarbij het kan helpen</p>
+      <div role="group" aria-labelledby="k-noden"><button class="filter" data-groep="noden" data-waarde="lezen">Lezen en spelling</button><button class="filter" data-groep="noden" data-waarde="taal">Taal en woordvinding</button><button class="filter" data-groep="noden" data-waarde="automatisering">Automatiseren en onthouden</button><button class="filter" data-groep="noden" data-waarde="aandacht">Aandacht en starten</button><button class="filter" data-groep="noden" data-waarde="overzicht">Overzicht en voorspelbaarheid</button></div>
+    </div>
+    <p class="filteractie"><button class="knop" id="wis" hidden>Wis alle filters</button> <span id="telling" aria-live="polite"></span></p>
+  </div>
+
+  <div class="galerij" id="rooster">
+
+<article class="kaart" data-vak="|Elektriciteit|Mechanica|" data-soort="cursus overzicht" data-noden="aandacht overzicht" data-context="davinci" id="leeratelier">
+  <a class="beeld" href="assets/img/screenshots/semester1-hub.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/semester1-hub-klein.jpg" alt="Schermafbeelding van Leeratelier ET — semester 1" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Leeratelier ET — semester 1</h3>
+    <p class="meta">Elektriciteit en mechanica · 5de en 6de jaar elektromechanische technieken</p>
+    <p class="kort">Eén startpagina voor vier cursussen en 41 hoofdstukken, waarin elk hoofdstuk begint met voorspellen in plaats van lezen.</p>
+    <p class="chips"><span class="chip">Leerstof doornemen</span><span class="chip">Overzicht en planning</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Leerlingen openden een hoofdstuk, lazen de eerste bladzijde en haakten af. Het ontbrak aan één plek waar je ziet wat er is, waar je gebleven bent en waar je opnieuw kunt instappen.</p>
+        <h4>De oorspronkelijke insteek</h4><p>De paginatekst zelf noemt de insteek: “Begrijpen begint met proberen.” De drieslag voorspel → onderzoek → verklaar staat als vaste stap op de startpagina.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling kiest een vak en een hoofdstuk, leest de leesweergave die hij zelf instelt, en bewaart zijn volgende leerstap. Elk hoofdstuk opent in een eigen leerapp.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Het materiaal van een heel semester krijgt één ingang en één vaste volgorde. Dat scheelt zoekwerk aan het begin van elke studiesessie.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: structureren van de leerstof, schrijven van de code en nalezen op volledigheid. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Leesweergave instelbaar per leerling</li><li>Rustige opmaak met veel witruimte</li><li>Bewaarde leerstap zonder account</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>De vaste volgorde en de bewaarde leerstap halen één beslissing weg bij het starten. Dat kan helpen bij leerlingen die moeilijk aan een taak beginnen of de draad kwijtraken — bij ADHD, maar evengoed bij wie gewoon veel vakken tegelijk heeft.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>De hoofdstukbundels bevatten overgenomen cursusbeelden en zijn daarom niet publiek te delen. Van deze startpagina staat hier alleen een schermafbeelding.</p>
+      </div>
+    </details>
+    <p class="acties"><span class="niet" title="Verwijst naar hoofdstukbundels met beschermd cursusmateriaal.">Niet publiek te delen</span></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Vakoverschrijdend|" data-soort="uitleg overzicht" data-noden="lezen taal aandacht overzicht" data-context="davinci" id="ondersteuning">
+  <a class="beeld" href="assets/img/screenshots/ondersteuning-leerregie.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/ondersteuning-leerregie-klein.jpg" alt="Schermafbeelding van Iedereen kan meedoen — ondersteuning en leerregie" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Iedereen kan meedoen — ondersteuning en leerregie</h3>
+    <p class="meta">Vakoverschrijdend · Leerlingen, leerkrachten en zorgteam</p>
+    <p class="kort">De pagina die uitlegt welke ondersteuning in het leerpakket zit en hoe een leerling ze kiest — zonder dat er een etiket aan vasthangt.</p>
+    <p class="chips"><span class="chip">Uitleg over de aanpak</span><span class="chip">Overzicht en planning</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Ondersteuning die aan een label hangt, wordt door leerlingen vaak niet gebruikt. De vraag was om hulpmiddelen beschikbaar te maken voor iedereen die ze wil, en de keuze bij de leerling te leggen.</p>
+        <h4>De oorspronkelijke insteek</h4><p>De pagina zelf verwijst naar UDL en naar de Education Endowment Foundation als onderbouwing, en spreekt van “keuze zonder vaste etiketten”.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling leest welke hulpmiddelen er zijn, kiest er zelf uit en ziet hoe een les stap voor stap minder begeleiding nodig heeft.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Het maakt expliciet wat er aan ondersteuning klaarstaat. Dat is ook bruikbaar in een gesprek met een zorgteam of met ouders.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: de tekst opstellen, de bronnen samenbrengen en de pagina bouwen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Rustige, korte tekstblokken</li><li>Hoog contrast en ruime regelafstand</li><li>Werkt op gsm en met toetsenbord</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Zelf kiezen welk hulpmiddel je gebruikt, kan de drempel verlagen om er een te gebruiken. Dat geldt breed, niet voor één bepaalde diagnose.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Dit is uitleg, geen oefenmateriaal. Of de beschreven aanpak werkt in een andere school, is hier niet onderzocht.</p>
+      </div>
+    </details>
+    <p class="acties"><a class="knop hoofd" href="demos/ondersteuning-en-leerregie.html">Open de toepassing</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Elektriciteit|Mechanica|" data-soort="cursus simulatie oefenen toets" data-noden="lezen taal automatisering overzicht" data-context="davinci" id="basistheorie">
+  <a class="beeld" href="assets/img/screenshots/theorie-e5.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/theorie-e5-klein.jpg" alt="Schermafbeelding van Basistheorie met simulaties — elektriciteit en mechanica 5 ET" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Basistheorie met simulaties — elektriciteit en mechanica 5 ET</h3>
+    <p class="meta">Elektriciteit, mechanica · 5de jaar elektromechanische technieken</p>
+    <p class="kort">Elf leersessies die telkens starten bij iets uit de leefwereld, de theorie uitleggen met eigen tekeningen, en eindigen met een schuifbare simulatie en een rekenvoorbeeld.</p>
+    <p class="chips"><span class="chip">Leerstof doornemen</span><span class="chip">Simulatie of visualisatie</span><span class="chip">Oefenen en herhalen</span><span class="chip">Proeftoets en zelfcontrole</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Wie uit de tweede graad komt, heeft de basis vaak wel gezien maar niet paraat. Herhalen uit de oude cursus werkte niet; er was iets nodig waar een leerling zelfstandig doorheen kan.</p>
+        <h4>De oorspronkelijke insteek</h4><p>De app zegt het zelf in de hoofding: alles wat je uit de tweede graad paraat moet hebben bij de start van 5 ET, in elf sessies, en “voorlezen kan overal”.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling kiest welke onderwerpen hij wil oefenen, doorloopt de sessies, schuift aan de simulaties, haalt begrippen op uit het geheugen, maakt oefenvragen en een proeftoets, en laat zich alles voorlezen.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Uitleg, beeld, simulatie en oefening staan in hetzelfde bestand, zodat een leerling niet hoeft te wisselen tussen bronnen. De selectie per onderwerp maakt gericht herhalen mogelijk.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: leerstof ordenen, teksten schrijven, simulaties programmeren en controleren op cursusgetrouwheid. Tijdens het gebruik draait er geen AI mee — het nakijken gebeurt met vooraf ingestelde antwoorden.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorleesknop op elk tekstblok, Vlaamse stem</li><li>Leesinstellingen in de app zelf</li><li>Formules in wetenschappelijke notatie (KaTeX)</li><li>Voortgang bewaard zonder account</li><li>Respecteert de systeeminstelling voor minder beweging</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Voorlezen kan de leesdrempel verminderen bij leerlingen die traag of moeizaam lezen. De herhaalfunctie (“herhalen wat aan de beurt is”) kan het inoefenen ondersteunen bij wie leerstof moeilijk automatiseert. Of audio helpt, verschilt sterk per leerling — voor sommigen met auditieve verwerkingsproblemen werkt het net niet.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>De simulaties zijn vereenvoudigde modellen, geen metingen. De voorleesstem hangt af van de browser en het toestel; op sommige toestellen is er geen Vlaamse stem beschikbaar.</p>
+      </div>
+    </details>
+    <p class="acties"><a class="knop hoofd" href="demos/elektriciteit-5et-basistheorie.html">Open de toepassing</a><a class="knop" href="demos/mechanica-5et-basistheorie.html">Open de mechanica-versie</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Elektriciteit|" data-soort="oefenen simulatie" data-noden="lezen automatisering taal" data-context="davinci" id="gelijkstroom">
+  <a class="beeld" href="assets/img/screenshots/gelijkstroomkring.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/gelijkstroomkring-klein.jpg" alt="Schermafbeelding van Gelijkstroomkringen — startpakket 5 ET" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Gelijkstroomkringen — startpakket 5 ET</h3>
+    <p class="meta">Elektriciteit · 5de jaar elektromechanische technieken</p>
+    <p class="kort">Een compact startpakket over gelijkstroomkringen: uitleg, schema&#x27;s, en rekenvoorbeelden die je stap voor stap kunt openklappen.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Simulatie of visualisatie</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Bij de start van het schooljaar bleek de rekenroutine rond spanning, stroom en weerstand grotendeels weg. Een korte, herbruikbare opfrissing was nodig vóór het nieuwe hoofdstuk startte.</p>
+        <h4>De oorspronkelijke insteek</h4><p>Niet expliciet gedocumenteerd. Uit de opbouw blijkt een opzet als startpakket: eerst de begrippen, dan de verbanden, dan oefenen.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling leest of beluistert de uitleg, bekijkt het schema, probeert de oefening en klapt daarna pas de uitgewerkte oplossing open.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>De oplossing staat er altijd bij, maar pas ná de poging. Dat houdt de drempel om te beginnen laag zonder meteen het antwoord te geven.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: oefeningen opstellen, uitwerkingen controleren en de app bouwen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorlezen met pauze en hervatten</li><li>Lettertype Atkinson Hyperlegible, ontworpen voor moeilijk lezen</li><li>Formules in wetenschappelijke notatie</li><li>Werkt zonder internetverbinding</li><li>MIT-licentie: vrij te hergebruiken</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Een uitgewerkte oplossing die je zelf opent, kan helpen bij leerlingen die vastlopen en anders stoppen. Het voorlezen met pauzeknop geeft controle over het tempo.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Het pakket is beperkt tot één onderwerp en volgt de leerlijn van deze school. Er zit geen voortgangsrapportage voor de leerkracht in.</p>
+      </div>
+    </details>
+    <p class="acties"><a class="knop hoofd" href="demos/gelijkstroomkringen-5et.html">Open de toepassing</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Mechanica|" data-soort="oefenen zelfstandig" data-noden="overzicht aandacht" data-context="davinci" id="afstandsopdracht">
+  <a class="beeld" href="assets/img/screenshots/mechanica-afstand-5et.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/mechanica-afstand-5et-klein.jpg" alt="Schermafbeelding van Mechanica 5 ET — afstandsopdracht" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Mechanica 5 ET — afstandsopdracht</h3>
+    <p class="meta">Mechanica · 5de jaar elektromechanische technieken</p>
+    <p class="kort">Een opdracht die een leerling zelfstandig thuis of in de studie kan afwerken, met alle uitleg en controlepunten in het bestand zelf.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Zelfstandig werk</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Bij afwezigheid van de leerkracht of van de leerling valt de les weg en blijft er meestal alleen een opdracht over zonder uitleg. Dit is een poging om de uitleg mee te geven.</p>
+        <h4>De oorspronkelijke insteek</h4><p>Niet expliciet gedocumenteerd. De opbouw — opdracht, uitleg, controlepunten — wijst op gebruik zonder begeleiding ter plaatse.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling werkt de opdracht af, controleert zichzelf aan de hand van de ingebouwde controlepunten en kan elk onderdeel laten voorlezen.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Zelfstandig werk wordt controleerbaar voor de leerling zelf, in plaats van pas dagen later bij de verbetering.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: opdrachten en uitwerkingen schrijven en nakijken, en de app bouwen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorlezen met pauze en hervatten</li><li>Lettertype Atkinson Hyperlegible</li><li>Werkt zonder internetverbinding</li><li>MIT-licentie</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Controlepunten in kleine stappen kunnen de verwerking en de aandacht ondersteunen bij leerlingen die een lange opdracht moeilijk overzien.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Zelfcontrole is geen evaluatie. De leerkracht ziet niet wat de leerling heeft ingevuld.</p>
+      </div>
+    </details>
+    <p class="acties"><a class="knop hoofd" href="demos/mechanica-afstandsopdracht-5et.html">Open de toepassing</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Wiskunde|" data-soort="oefenen simulatie" data-noden="automatisering lezen taal" data-context="davinci" id="wiskunde">
+  <a class="beeld" href="assets/img/screenshots/wiskunde-basismodellen.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/wiskunde-basismodellen-klein.jpg" alt="Schermafbeelding van Wiskunde 3de graad — basismodellen" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Wiskunde 3de graad — basismodellen</h3>
+    <p class="meta">Wiskunde · 3de graad technische richtingen</p>
+    <p class="kort">Functies, goniometrie, analyse en getallen in één bestand, met de grafiek naast de formule in plaats van eronder.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Simulatie of visualisatie</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Wiskunde is in een technische richting vaak de drempel voor het vaktechnische werk. Wie het verband tussen formule en grafiek niet ziet, loopt later vast bij wisselstroom en bij krachten.</p>
+        <h4>De oorspronkelijke insteek</h4><p>Niet expliciet gedocumenteerd. De opbouw per basismodel wijst op herhaalbaar oefenen van de standaardvormen.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling verandert de parameters en ziet de grafiek mee veranderen, en oefent daarna op de bijhorende vragen.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Het verband tussen de formule en het beeld wordt zichtbaar in plaats van verteld. Dat is moeilijk te doen op papier.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: de basismodellen ordenen, de interactieve grafieken programmeren en de wiskunde nakijken. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorlezen met pauze en hervatten</li><li>Lettertype Atkinson Hyperlegible</li><li>Formules in wetenschappelijke notatie</li><li>Werkt zonder internetverbinding</li><li>MIT-licentie</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Visuele uitleg kan gesproken en geschreven uitleg aanvullen. Voor leerlingen met woordvindings- of taalproblemen kan het beeld een ingang zijn die de tekst niet biedt.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>De selectie van basismodellen volgt deze leerlijn en dekt het leerplan niet volledig.</p>
+      </div>
+    </details>
+    <p class="acties"><a class="knop hoofd" href="demos/wiskunde-basismodellen-3egraad.html">Open de toepassing</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Elektriciteit|" data-soort="cursus oefenen toets" data-noden="lezen taal overzicht automatisering" data-context="davinci" id="leerapp-a1">
+  <a class="beeld" href="assets/img/screenshots/leerapp-a1-overzicht.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/leerapp-a1-overzicht-klein.jpg" alt="Schermafbeelding van Leerapp elektriciteit A1 — 3de jaar" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Leerapp elektriciteit A1 — 3de jaar</h3>
+    <p class="meta">Elektriciteit · 3de jaar, eerste jaar van de richting</p>
+    <p class="kort">Veertien hoofdstukken en twee examenbundels, elk met leerroute, begrippen, proeftoets en een luisterversie.</p>
+    <p class="chips"><span class="chip">Leerstof doornemen</span><span class="chip">Oefenen en herhalen</span><span class="chip">Proeftoets en zelfcontrole</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>De eerste leerlingen van de richting komen uit heel verschillende scholen binnen. Het verschil in voorkennis is groot, en de klassikale les kan dat niet opvangen.</p>
+        <h4>De oorspronkelijke insteek</h4><p>Blijkt uit de structuur van elke bundel: jouw leerroute, lessen in boekvolgorde, onderzoek de relaties, begrippen oefenen, zelf proberen, proeftoets, bekijken en beluisteren.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling volgt zijn eigen leerroute door het hoofdstuk, oefent de begrippen, probeert zelf en sluit af met een proeftoets. Bij elk onderdeel kan hij kiezen tussen lezen, kijken en luisteren.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Dezelfde leerstof komt in meerdere vormen terug. Wie op de tekst vastloopt, komt er soms via het beeld of de gesproken versie wel.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: leerstof structureren, oefeningen en proeftoetsen opstellen, de apps bouwen en nalezen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorleesknop op elk tekstblok</li><li>Statusmeldingen worden voorgelezen door schermlezers (aria-live)</li><li>Respecteert de systeeminstelling voor minder beweging</li><li>Voortgang bewaard zonder account</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Meerdere kanalen naast elkaar — tekst, beeld, geluid — laat de leerling kiezen welke ingang werkt. Een proeftoets zonder punten kan de drempel verlagen voor wie faalangstig is, al is dat hier niet onderzocht.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>De bundels bevatten overgenomen cursusbeelden en zijn tot 128 MB groot. Ze kunnen niet publiek worden gedeeld; hier staat alleen de overzichtspagina op beeld.</p>
+      </div>
+    </details>
+    <p class="acties"><span class="niet" title="Bevat overgenomen cursusbeelden uit het handboek.">Niet publiek te delen</span></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Vakoverschrijdend|" data-soort="overzicht leerkracht" data-noden="overzicht" data-context="davinci" id="leerlijnen">
+  <a class="beeld" href="assets/img/screenshots/leerlijnen-emt.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/leerlijnen-emt-klein.jpg" alt="Schermafbeelding van Leerlijnen EMT — planningstool voor de vakgroep" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-davinci">KTA da Vinci</p>
+    <h3>Leerlijnen EMT — planningstool voor de vakgroep</h3>
+    <p class="meta">Vakoverschrijdend · Leerkrachten en vakcoördinatie</p>
+    <p class="kort">Alle leerplandoelen van het 3de tot het 6de jaar, doorzoekbaar en gekoppeld aan de lessen waarin ze aan bod komen.</p>
+    <p class="chips"><span class="chip">Overzicht en planning</span><span class="chip">Voor de leerkracht</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Afspraken tussen vakken bleven hangen in vergaderingen. Wie wanneer welk doel behandelt, stond nergens naast elkaar.</p>
+        <h4>De oorspronkelijke insteek</h4><p>De tool noemt het zelf: verticale leerlijnen per thema over de jaren heen, en horizontale leerlijnen tussen vakken die in hetzelfde jaar hetzelfde thema behandelen.</p>
+        <h4>Wat de leerling doet</h4><p>Een leerkracht filtert op vak, jaar of thema en ziet welke doelen al gedekt zijn en waar dubbel werk of een gat zit.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Het gesprek in de vakgroep vertrekt van hetzelfde beeld. Een leerling die ondersteuning nodig heeft, kan zo gerichter een voortraject krijgen.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: leerplandoelen ordenen, koppelingen leggen en de tool bouwen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Volledig met het toetsenbord te bedienen</li><li>Filters in plaats van lange lijsten</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Niet gericht op een leerling, maar op de leerkracht. Een duidelijke leerlijn maakt het makkelijker om te bepalen welke voorkennis een leerling mist.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Interne planningstool met leerplandoelen van de onderwijsverstrekker. Hier staat alleen een schermafbeelding; de tool zelf wordt niet publiek gedeeld.</p>
+      </div>
+    </details>
+    <p class="acties"><span class="niet" title="Interne planningstool met leerplantekst van de onderwijsverstrekker.">Niet publiek te delen</span></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Biologie|" data-soort="oefenen cursus toets" data-noden="lezen taal aandacht automatisering overzicht" data-context="thuis" id="biologie">
+  <a class="beeld" href="assets/img/screenshots/app-biologie-cel.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/app-biologie-cel-klein.jpg" alt="Schermafbeelding van Studie-app biologie — de cel" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-thuis">Individuele ondersteuning</p>
+    <h3>Studie-app biologie — de cel</h3>
+    <p class="meta">Biologie · 5de jaar, individuele ondersteuningsvraag</p>
+    <p class="kort">Een hoofdstuk opgesplitst in vijf sessies van maximaal 25 minuten, met planner, begrippenkaarten, oefenvragen en voorlezen overal.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Leerstof doornemen</span><span class="chip">Proeftoets en zelfcontrole</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Een handboekhoofdstuk van dertig bladzijden is niet zelfstandig te verwerken voor wie moeilijk leest en nieuwe woorden traag onthoudt. Het alternatief was dat een ouder elke avond mee moest drillen.</p>
+        <h4>De oorspronkelijke insteek</h4><p>Staat in de bouwinstructies: één standalone bestand dat de leerling zelf opent om voor een toets te oefenen, met een vaste structuur die bij elk vak hetzelfde is. De achtergrondmethode is de “Geef me de 5”-aanpak: elke taak in een vast stramien van vijf stappen.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling kiest een sessie in de planner, werkt die af in focus-modus met één kaart per scherm, oefent daarna de begrippen als flashcards en maakt de oefenvragen van het hoofdstuk.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Het hoofdstuk wordt behapbaar, de volgorde ligt vast en de leerling kan alleen werken. Dat laatste was de eigenlijke vraag.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: het hoofdstuk opdelen in sessies, begrippen en oefenvragen opstellen, en de app bouwen. Tijdens het gebruik draait er geen AI mee: het nakijken gebeurt met vooraf ingestelde antwoorden.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorleesknop op élk tekstblok, Vlaamse stem met instelbare snelheid</li><li>Focus-modus: één kaart per scherm, de rest verdwijnt</li><li>Sessies van maximaal 20 tot 25 minuten, met pauze ertussen</li><li>Voortgang per vak apart bewaard, zonder account</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Voorlezen kan de leesdrempel verlagen bij dyslexie. Eén kaart per scherm kan afleiding wegnemen bij leerlingen met aandachtsproblemen. Een vaste, voorspelbare volgorde over alle vakken heen kan houvast geven bij leerlingen met autisme. Dit zijn plausibele verbanden tussen een functie en een drempel, geen gemeten effecten — en dezelfde diagnose betekent niet dezelfde behoefte.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>De inhoud volgt een handboek van een uitgeverij en kan daarom niet publiek gedeeld worden. Deze app is gemaakt voor één leerling; ze is niet getest met anderen. Een app behandelt geen leerstoornis en vervangt geen leerkracht, logopedist of begeleiding.</p>
+      </div>
+    </details>
+    <p class="acties"><span class="niet" title="Volgt een handboek van een uitgeverij. Probeer de werkende demo met eigen voorbeeldinhoud.">Niet publiek te delen</span><a class="knop" href="demos/demo-begrippen-oefenen.html">Open de demo in de plaats</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Chemie|" data-soort="oefenen simulatie toets" data-noden="automatisering taal lezen" data-context="thuis" id="chemie">
+  <a class="beeld" href="assets/img/screenshots/app-chemie-begrippen.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/app-chemie-begrippen-klein.jpg" alt="Schermafbeelding van Studie-app chemie — concentratiegrootheden" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-thuis">Individuele ondersteuning</p>
+    <h3>Studie-app chemie — concentratiegrootheden</h3>
+    <p class="meta">Chemie · 5de jaar, individuele ondersteuningsvraag</p>
+    <p class="kort">Eenentwintig begrippen in categorieën, en een rekenmodule die eerst de juiste verhouding laat kiezen vóór er gerekend wordt.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Simulatie of visualisatie</span><span class="chip">Proeftoets en zelfcontrole</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Bij rekenoefeningen ging het mis in de eerste stap: welke formule hoort hierbij? Doorrekenen lukte wel, de keuze niet.</p>
+        <h4>De oorspronkelijke insteek</h4><p>De ondertitel in de app zegt het: “Kies eerst de juiste verhouding, reken daarna met eenheden.” De begrippen zijn daarvoor gegroepeerd per type grootheid.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling oefent de begrippen per categorie, kiest bij een vraagstuk eerst het type grootheid en rekent dan pas, met eenheden in elke stap.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>De denkfout wordt zichtbaar op de plek waar ze gebeurt, in plaats van pas in het eindantwoord.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: begrippen ordenen, oefenvragen opstellen, uitwerkingen narekenen en de app bouwen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorleesknop op elke begrippenkaart</li><li>Begrippen gefilterd per categorie, niet in één lange lijst</li><li>Formules in wetenschappelijke notatie</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Hulp bij vaktermen kan de woordvinding ondersteunen. Het opsplitsen in “eerst kiezen, dan rekenen” kan helpen bij wie procedures moeilijk automatiseert.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Volgt een handboek van een uitgeverij; niet publiek te delen. Gemaakt voor één leerling.</p>
+      </div>
+    </details>
+    <p class="acties"><span class="niet" title="Volgt een handboek van een uitgeverij. Probeer de werkende demo met eigen voorbeeldinhoud.">Niet publiek te delen</span><a class="knop" href="demos/demo-begrippen-oefenen.html">Open de demo in de plaats</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Fysica|" data-soort="oefenen simulatie toets" data-noden="automatisering lezen overzicht" data-context="thuis" id="fysica">
+  <a class="beeld" href="assets/img/screenshots/app-fysica.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/app-fysica-klein.jpg" alt="Schermafbeelding van Studie-app fysica — gravitatie" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-thuis">Individuele ondersteuning</p>
+    <h3>Studie-app fysica — gravitatie</h3>
+    <p class="meta">Fysica · 5de jaar, individuele ondersteuningsvraag</p>
+    <p class="kort">Gravitatiekracht en gravitatieveld, met rekenoefeningen die tussenstappen apart laten controleren en een papieren oefenbundel erbij.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Simulatie of visualisatie</span><span class="chip">Proeftoets en zelfcontrole</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Bij fysica is het antwoord vaak fout door één verkeerde tussenstap. In een gewone oefenbundel zie je dat pas achteraf, en dan is de hele oefening “fout”.</p>
+        <h4>De oorspronkelijke insteek</h4><p>Niet volledig gedocumenteerd. Uit de bijhorende bestanden — een oefentoets, een antwoordsleutel en een begeleidersleidraad — blijkt dat de app bedoeld was als onderdeel van een groter oefenpakket, niet als vervanging ervan.</p>
+        <h4>Wat de leerling doet</h4><p>De leerling werkt de sessies af, oefent de begrippen en maakt de oefenvragen; bij elke tussenstap kan hij controleren of hij nog juist zit.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Een fout wordt lokaal zichtbaar. De leerling hoeft niet opnieuw te beginnen om te weten waar het misging.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: leerstof opdelen, oefeningen en tussenstappen opstellen en narekenen, en de app bouwen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorleesknop op elk tekstblok</li><li>Focus-modus met één kaart per scherm</li><li>Formules in wetenschappelijke notatie</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Herhaalbare oefeningen met feedback per stap kunnen het inoefenen ondersteunen. Dat is vooral relevant bij wie rekenprocedures moeilijk automatiseert.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Volgt een handboek van een uitgeverij; niet publiek te delen. De volledige versie met ingebouwde video&#x27;s is 373 MB en kan sowieso niet gehost worden.</p>
+      </div>
+    </details>
+    <p class="acties"><span class="niet" title="Volgt een handboek van een uitgeverij. Probeer de werkende demo met eigen voorbeeldinhoud.">Niet publiek te delen</span><a class="knop" href="demos/demo-begrippen-oefenen.html">Open de demo in de plaats</a></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Godsdienst|" data-soort="oefenen cursus" data-noden="lezen taal overzicht" data-context="thuis" id="godsdienst">
+  <a class="beeld" href="assets/img/screenshots/app-godsdienst.jpg" target="_blank" rel="noopener"><img src="assets/img/screenshots/app-godsdienst-klein.jpg" alt="Schermafbeelding van Studie-app godsdienst — samenlevingsopbouw" loading="lazy" width="760" height="510"><span class="vergroot">Vergroot</span></a>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-thuis">Individuele ondersteuning</p>
+    <h3>Studie-app godsdienst — samenlevingsopbouw</h3>
+    <p class="meta">Godsdienst · 5de jaar, individuele ondersteuningsvraag</p>
+    <p class="kort">Hetzelfde stramien toegepast op een tekstvak: lessen volgens het boek, begrippen, oefenvragen, en het eigen klaswerk naast de oplossing.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Leerstof doornemen</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>Bij vakken zonder formules zit de moeilijkheid volledig in de tekst. Lange beschouwende teksten lezen en daar daarna iets over kunnen zeggen, is precies de combinatie die moeilijk is.</p>
+        <h4>De oorspronkelijke insteek</h4><p>De hoofding van de app vat het samen: “Rustig leren. Hardop oefenen.”</p>
+        <h4>Wat de leerling doet</h4><p>De leerling beluistert of leest de les, oefent de begrippen, maakt de oefenvragen en legt zijn eigen ingediende klaswerk naast de voorbeeldoplossing.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Een tekstvak wordt oefenbaar in plaats van alleen leesbaar. Het eigen werk naast de oplossing maakt de verbetering concreet.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij de ontwikkeling: de leerstof samenvatten, begrippen en vragen opstellen, en de app bouwen. Tijdens het gebruik draait er geen AI mee.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorleesknop op elk tekstblok, Vlaamse stem</li><li>Statusmeldingen worden voorgelezen door schermlezers (aria-live)</li><li>Video bij de les, met de tekst ernaast</li><li>Werkt zonder internetverbinding</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Hardop oefenen met voorlezen kan helpen bij wie moeite heeft om een geschreven tekst om te zetten naar een eigen antwoord. Dat is relevant bij taalontwikkelingsproblemen, maar evengoed bij wie gewoon weinig leest.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Volgt een handboek van een uitgeverij; niet publiek te delen. Het onderdeel “klaswerk naast de oplossing” bevat werk van de leerling zelf en blijft sowieso privé.</p>
+      </div>
+    </details>
+    <p class="acties"><span class="niet" title="Volgt een handboek van een uitgeverij en bevat eigen klaswerk.">Niet publiek te delen</span></p>
+  </div>
+</article>
+
+<article class="kaart" data-vak="|Elektriciteit|" data-soort="oefenen demo" data-noden="lezen taal automatisering" data-context="demo" id="demo">
+  <div class="beeld geenbeeld"><span>Werkende demo — open ze hieronder</span></div>
+  <div class="kaartlijf">
+    <p class="herkomst herkomst-demo">Demo</p>
+    <h3>Begrippen oefenen — werkende demo</h3>
+    <p class="meta">Elektriciteit (voorbeeldinhoud) · Iedereen die wil zien hoe het werkt</p>
+    <p class="kort">De oefenmodule uit de studie-apps, met zelf geschreven voorbeeldinhoud, zodat ze wél publiek kan staan. Tien begrippen, voorlezen, voorbeeldantwoord en automatische herhaling.</p>
+    <p class="chips"><span class="chip">Oefenen en herhalen</span><span class="chip">Werkende demo</span></p>
+    <details>
+      <summary>Meer over deze toepassing</summary>
+      <div class="diep">
+        <h4>Waarom ze gemaakt is</h4><p>De studie-apps zelf kunnen niet online omdat ze cursusmateriaal volgen. Deze demo is daarom opnieuw opgebouwd met eigen voorbeeldinhoud over elektrische grootheden.</p>
+        <h4>De oorspronkelijke insteek</h4><p>Gebouwd volgens de afspraak die in de bouwinstructies van september 2026 staat: na een niet-lege poging altijd duidelijke feedback én een opvraagbaar, voorleesbaar voorbeeldantwoord — ook na een juist antwoord. Wie het voorbeeld vóór zijn eigen antwoord bekijkt, krijgt het begrip opnieuw.</p>
+        <h4>Wat de leerling doet</h4><p>Je typt zelf een antwoord, laat nakijken, krijgt feedback en een uitgewerkt voorbeeldantwoord. Je kunt alles laten voorlezen, de letters vergroten en het thema wisselen.</p>
+        <h4>Wat het oplevert voor het leren</h4><p>Het laat zien waar het verschil zit met een gewone quiz: hulp wordt geregistreerd en vertaald naar herhaling, in plaats van weggemoffeld.</p>
+        <h4>De rol van AI</h4><p>AI is gebruikt bij het bouwen van deze demo. Tijdens het gebruik draait er geen AI mee: het nakijken gebeurt met een vaste trefwoordenlijst per begrip.</p>
+        <h4>Toegankelijkheid <span class="badge badge-ja">gecontroleerde functies</span></h4>
+        <ul class="vink"><li>Voorlezen met Vlaamse stem</li><li>Knop voor grotere letters</li><li>Donkere en lichte weergave</li><li>Volledig met het toetsenbord te bedienen</li><li>Respecteert de systeeminstelling voor minder beweging</li><li>Werkt zonder internetverbinding na het laden</li></ul>
+        <h4>Mogelijke ondersteuning <span class="badge badge-mss">mogelijke inzet</span></h4><p>Toont concreet hoe voorlezen, een voorbeeldantwoord en geplande herhaling samenwerken. Bedoeld om het gesprek over ondersteuning concreet te maken, niet als leermateriaal.</p>
+        <h4>Beperkingen en aandachtspunten</h4><p>Het nakijken gebeurt op trefwoorden en is dus grover dan een leerkracht. De inhoud is voorbeeldinhoud en volgt geen leerplan.</p>
+      </div>
+    </details>
+    <p class="acties"><a class="knop hoofd" href="demos/demo-begrippen-oefenen.html">Open de toepassing</a></p>
+  </div>
+</article>
+  </div>
+  <p id="leeg" class="leeg" hidden>Geen enkel voorbeeld voldoet aan deze combinatie. Wis een filter om verder te kijken.</p>
+</section>
+
+<section id="noden" class="vlak">
+  <div class="omhulsel vak">
+    <h2>Welke functie kan welke drempel verlagen?</h2>
+    <p class="inleiding">Hieronder staat per functie wat ze ondersteunt en voor wie ze relevant kán zijn. Let op drie dingen. Deze begrippen zijn niet allemaal leerstoornissen — autisme en ADHD zijn ontwikkelingsstoornissen, een auditief verwerkingsprobleem is iets anders dan dyslexie. Dezelfde diagnose betekent niet dezelfde ondersteuningsbehoefte. En dit zijn geen gemeten effecten van mijn toepassingen: ik heb daar geen onderzoek naar gedaan.</p>
+    <div class="tabelwikkel">
+    <table>
+      <caption>Van concrete functie naar ondersteunde vaardigheid naar mogelijke doelgroep</caption>
+      <thead><tr><th scope="col">Functie in de toepassing</th><th scope="col">Wat ze ondersteunt</th><th scope="col">Voor wie dit relevant kan zijn</th></tr></thead>
+      <tbody>
+        <tr><td>Voorlezen met een Vlaamse stem, op elk tekstblok</td><td>Vermindert de leesdrempel: de leerling hoeft niet eerst te decoderen om bij de inhoud te komen.</td><td>Dyslexie en dysorthografie; leerlingen die traag lezen. Niet vanzelfsprekend bruikbaar bij auditieve verwerkingsproblemen — daar kan geluid net storen.</td></tr>
+        <tr><td>Instelbare leessnelheid, pauzeren en hervatten</td><td>Geeft controle over het tempo van de uitleg.</td><td>Leerlingen die informatie trager verwerken, en leerlingen die vaak moeten terugspoelen.</td></tr>
+        <tr><td>Eén kaart per scherm (focus-modus)</td><td>Neemt visuele afleiding weg en maakt zichtbaar wat de volgende stap is.</td><td>ADHD en aandachtsproblemen; leerlingen die vastlopen op een volle bladzijde.</td></tr>
+        <tr><td>Vaste structuur en volgorde over alle vakken heen</td><td>Maakt het verloop voorspelbaar, zodat de aandacht naar de leerstof gaat en niet naar de bediening.</td><td>Autismespectrumstoornis; leerlingen die moeite hebben met wisselende werkvormen.</td></tr>
+        <tr><td>Sessies van maximaal 20 tot 25 minuten met pauze</td><td>Houdt de taak afgebakend en voorzienbaar in tijd.</td><td>Leerlingen met een korte volgehouden aandacht, en leerlingen die snel vermoeid raken.</td></tr>
+        <tr><td>Begrippenkaarten met herhaling op basis van gebruikte hulp</td><td>Ondersteunt het inslijpen van vaktaal: wat met hulp lukte, komt terug.</td><td>Automatiserings- en woordvindingsproblemen; taalontwikkelingsstoornis (STOS).</td></tr>
+        <tr><td>Uitgewerkt voorbeeldantwoord, opvraagbaar en voorleesbaar</td><td>Toont niet alleen dát het fout was, maar hoe het antwoord eruitziet.</td><td>Leerlingen die vastlopen en afhaken bij een foutmelding zonder model.</td></tr>
+        <tr><td>Simulatie waarin de leerling zelf een parameter verandert</td><td>Vult gesproken en geschreven uitleg aan met een beeld dat meebeweegt.</td><td>Leerlingen bij wie taal de flessenhals is, en wie abstracte verbanden moeilijk vasthoudt.</td></tr>
+        <tr><td>Formules in echte wetenschappelijke notatie</td><td>Houdt de notatie consequent, zodat eenzelfde grootheid er overal hetzelfde uitziet.</td><td>Alle leerlingen; in het bijzonder wie moeite heeft met wisselende schrijfwijzen.</td></tr>
+        <tr><td>Voortgang bewaard in het toestel zelf, zonder account</td><td>Geen aanmelding, geen gegevens die de school uit moeten.</td><td>Iedereen. Dit is een privacykeuze, geen ondersteuningsfunctie.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="voetnoot">Onderbouwing bij de algemene principes, niet bij mijn toepassingen: de <a href="https://udlguidelines.cast.org/" target="_blank" rel="noopener">UDL-richtlijnen van CAST</a> over meerdere representatievormen, en de <a href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit" target="_blank" rel="noopener">Teaching and Learning Toolkit</a> van de Education Endowment Foundation over feedback en metacognitie. Voor het Vlaamse kader rond leerstoornissen en redelijke aanpassingen is <a href="https://onderwijs.vlaanderen.be/" target="_blank" rel="noopener">onderwijs.vlaanderen.be</a> het vertrekpunt. Wat ik <em>niet</em> kan onderbouwen, is of mijn apps leerwinst opleveren. Dat zou een opzet met een vergelijking vragen, en die is er niet.</p>
+  </div>
+</section>
+
+<section id="werkwijze" class="omhulsel vak">
+  <h2>Hoe ik met AI werk</h2>
+  <div class="stappen">
+    <div class="stap"><p class="stapnr">1</p><h3>De cursus is het vertrekpunt</h3><p>Ik vertrek altijd van het bestaande lesmateriaal, niet van wat een AI-model zelf over het onderwerp denkt. De leerstof, de volgorde en de terminologie komen uit de cursus.</p></div>
+    <div class="stap"><p class="stapnr">2</p><h3>Eén vast sjabloon per soort app</h3><p>Elke app vertrekt van hetzelfde sjabloon. Daardoor werkt biologie exact zoals chemie, en moet een leerling de bediening maar één keer leren.</p></div>
+    <div class="stap"><p class="stapnr">3</p><h3>Ik laat het nalezen, en lees daarna zelf na</h3><p>Een tweede AI-sessie controleert de app tegen de cursus: ontbreekt er een onderdeel, klopt elke berekening, zit er een fout in de oplossingen. Daarna ga ik er zelf door. Dat laatste blijft nodig — er zitten telkens fouten in.</p></div>
+    <div class="stap"><p class="stapnr">4</p><h3>Eén bestand, offline, zonder account</h3><p>Elke toepassing is één HTML-bestand. Geen installatie, geen server, geen aanmelding, geen gegevens die weggaan. Je kunt het op een stick zetten en het werkt.</p></div>
+    <div class="stap"><p class="stapnr">5</p><h3>Geen leerlinggegevens in een AI-tool</h3><p>Namen, resultaten, verslagen en diagnoses gaan niet in een AI-tool. Als ik een vraag stel over een leerling, dan functioneel beschreven en zonder naam.</p></div>
+    <div class="stap"><p class="stapnr">6</p><h3>Tijdens het gebruik draait er geen AI</h3><p>In geen enkele toepassing hieronder staat AI aan terwijl de leerling werkt. Het nakijken gebeurt met antwoorden die ik vooraf heb ingesteld. Dat is bewust: het is voorspelbaar, het kost niets en er vertrekt geen enkel gegeven.</p></div>
+  </div>
+</section>
+
+<section id="grenzen" class="vlak">
+  <div class="omhulsel vak">
+    <h2>Waar dit stopt</h2>
+    <div class="tweekolom">
+      <div>
+        <h3>Vakinhoud en didactiek blijven mensenwerk</h3>
+        <p>AI schrijft vlot en overtuigend, ook als het fout is. In elke app die ik gemaakt heb, zaten fouten: een verkeerde tussenstap, een begrip dat net naast de cursusdefinitie zat, een oefening met een onmogelijk antwoord. Die haal je er alleen uit door het vak te kennen en er zelf door te gaan. Een leerkracht die dit materiaal gebruikt, moet het dus eerst zelf nalezen.</p>
+        <h3>Een app behandelt geen stoornis</h3>
+        <p>Deze toepassingen verlagen drempels. Ze vervangen geen leerkracht, geen logopedist, geen leerondersteuner en geen handelingsplan. Ze zijn ook geen vervanging voor redelijke aanpassingen waar een leerling recht op heeft.</p>
+      </div>
+      <div>
+        <h3>Wat ik niet weet</h3>
+        <p>Ik heb geen metingen. Ik weet dat mijn zoon nu zelfstandig studeert waar dat vroeger niet lukte, en ik zie dat leerlingen de apps gebruiken. Dat is een observatie van één ouder en één leerkracht, geen bewijs. Of dit bij andere leerlingen werkt, moet blijken.</p>
+        <h3>Wat nog te doen is <span class="badge badge-tk">nog te doen</span></h3>
+        <ul class="vink nee">
+          <li>Een versie die niet aan één handboek vasthangt, zodat ze wel gedeeld kan worden.</li>
+          <li>Testen met een schermlezer door iemand die er dagelijks mee werkt.</li>
+          <li>Een manier om te zien of een leerling vastloopt, zonder persoonsgegevens te verzamelen.</li>
+          <li>Nakijken van open antwoorden dat verder gaat dan trefwoorden.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="meer" class="omhulsel vak">
+  <h2>Meer van hetzelfde werk</h2>
+  <div class="links">
+    <a class="linkkaart" href="https://onderwijsai.shiftedmake.com" target="_blank" rel="noopener">
+      <h3>onderwijsai.shiftedmake.com</h3>
+      <p>Handleidingen om AI didactisch in te zetten, per onderwijsniveau, vak, doelgroep en ondersteuningsbehoefte. Met kant-en-klare prompts. Gratis, onder CC BY-SA.</p>
+    </a>
+    <a class="linkkaart" href="https://linkbank.shiftedmake.com" target="_blank" rel="noopener">
+      <h3>linkbank.shiftedmake.com</h3>
+      <p>Een doorzoekbare verzameling onderwijs- en STEM-bronnen, met filters op niveau, vak en doel.</p>
+    </a>
+    <a class="linkkaart" href="https://stem-at-davinci.shiftedmake.com" target="_blank" rel="noopener">
+      <h3>stem-at-davinci.shiftedmake.com</h3>
+      <p>De leerlijnen van de eerste tot de derde graad bij KTA da Vinci, met de leerplandoelen per vak en jaar.</p>
+    </a>
+  </div>
+  <p class="voetnoot">Het adres <strong>stem-at-davici</strong> met één n bestaat niet; de werkende versie is <strong>stem-at-davinci</strong>.</p>
+</section>
+
+</main>
+
+<footer class="voet">
+  <div class="omhulsel">
+    <img class="kubus" src="assets/img/shiftedmake-kubus.png" alt="" width="120" height="129">
+    <p><strong>Serge Hanssens</strong> — leerkracht elektriciteit en mechanica, GO! KTA Da Vinci Edegem. Maker onder de naam SHiftEDMake.</p>
+    <p>Het werk voor KTA da Vinci staat hier als voorbeeld uit mijn eigen lespraktijk. Het materiaal voor thuis is ontstaan uit één individuele ondersteuningsvraag en is geen schoolproject.</p>
+    <p>Code en zelf geschreven voorbeeldinhoud onder MIT-licentie. Bestaand cursusmateriaal, afbeeldingen en logo's van uitgeverijen en scholen blijven van hun rechthebbenden en staan niet op deze site.</p>
+    <p class="klein">Laatst bijgewerkt op 13 oktober 2026 · <a href="https://github.com/SergeHanssens/ai_ondersteuning" target="_blank" rel="noopener">broncode op GitHub</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/filter.js"></script>
+</body>
+</html>
