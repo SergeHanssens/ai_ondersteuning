@@ -8,7 +8,7 @@ De site is bedoeld voor directie, zorgteam, leerkrachten en ouders. Ze toont der
 voorbeelden; zes daarvan staan er als werkende toepassing bij, de andere alleen als
 schermafbeelding omdat ze cursusmateriaal van een uitgeverij volgen.
 
-**Live:** https://schoolondersteuning.shiftedmake.com
+**Live:** https://sergehanssens.github.io/ai_ondersteuning/
 
 ## Lokaal bekijken
 
@@ -43,16 +43,24 @@ CNAME                          het eigen domein voor GitHub Pages
 De site draait op GitHub Pages vanaf de `main`-branch, map `/ (root)`.
 
 1. **Settings → Pages**: Source = *Deploy from a branch*, Branch = `main`, map `/ (root)`.
-2. **Custom domain**: `schoolondersteuning.shiftedmake.com`. Het bestand `CNAME` in deze
-   repo zet dat al klaar.
-3. **DNS bij de domeinregistrar van shiftedmake.com**: een `CNAME`-record
-   `schoolondersteuning` → `sergehanssens.github.io.`
-4. Zet daarna in Settings → Pages **Enforce HTTPS** aan, zodra het certificaat klaar is
-   (dat duurt meestal tien minuten tot een uur na het DNS-record).
+Dat is alles — de site draait op `https://sergehanssens.github.io/ai_ondersteuning/`.
 
-De site werkt ook onder een submap, bijvoorbeeld op
-`https://sergehanssens.github.io/ai_ondersteuning/`, omdat alle paden relatief zijn.
-Verwijder daarvoor `CNAME`, of laat hem staan en gebruik beide adressen naast elkaar.
+### Later overzetten naar schoolondersteuning.shiftedmake.com
+
+1. Bij OVH (daar staat de DNS van `shiftedmake.com`) een `CNAME`-record toevoegen in de
+   zone `shiftedmake.com`:
+
+   | Subdomein | Type | TTL | Doel |
+   |---|---|---|---|
+   | `schoolondersteuning` | `CNAME` | standaard | `sergehanssens.github.io.` (met het punt op het einde) |
+
+2. In **Settings → Pages → Custom domain** `schoolondersteuning.shiftedmake.com` invullen
+   en bewaren. GitHub maakt dan zelf een `CNAME`-bestand in deze repo aan.
+3. Wachten tot de DNS-controle groen is (meestal tien minuten tot een uur) en daarna
+   **Enforce HTTPS** aanzetten.
+
+Alle paden in de site zijn relatief, dus ze werkt zowel onder een submap als op een
+eigen domein. Er hoeft niets aan de inhoud te veranderen.
 
 Bij een andere statische host (Netlify, Cloudflare Pages) volstaat het om deze map te
 uploaden. Er is niets te bouwen.
