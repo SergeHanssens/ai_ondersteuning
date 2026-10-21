@@ -37,7 +37,7 @@
     var totaal = Object.keys(actief).reduce(function (s, g) { return s + actief[g].length; }, 0);
     wis.hidden = totaal === 0;
     telling.textContent = totaal === 0
-      ? ""
+      ? "Alle " + kaarten.length + " voorbeelden worden getoond."
       : (n === 1 ? "1 voorbeeld past bij je keuze." : n + " voorbeelden passen bij je keuze.");
     leeg.hidden = n !== 0;
   }
@@ -45,6 +45,7 @@
   wis.addEventListener("click", function () {
     Object.keys(actief).forEach(function (g) { actief[g] = []; });
     knoppen.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+    knoppen[0].focus();
     pas();
     document.getElementById("filters").scrollIntoView({ block: "nearest" });
   });

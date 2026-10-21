@@ -13,20 +13,21 @@
 :root{
   --coral:#ff6b6b; --teal:#4ecdc4; --amber:#feca57; --purple:#754ea6; --navy:#2c3e50;
   --bg:#f6f7f9; --kaart:#ffffff; --tekst:#1d2733; --zacht:#5a6b7d; --lijn:#dde3ea;
-  --goed:#157f5f; --goed-bg:#e7f6f0; --hulp:#8a5a00; --hulp-bg:#fff6e0; --focus:#754ea6;
+  --goed:#147557; --goed-bg:#e7f6f0; --hulp:#8a5a00; --hulp-bg:#fff6e0; --focus:#754ea6; --actief-tekst:#fff;
   --radius:14px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-thema="licht"]){
     --bg:#131920; --kaart:#1b232d; --tekst:#eef3f8; --zacht:#a9b7c6; --lijn:#2d3945;
-    --goed:#5ddcb0; --goed-bg:#11322a; --hulp:#ffcd6b; --hulp-bg:#33280d; --focus:#b79bea;
+    --goed:#5ddcb0; --goed-bg:#11322a; --hulp:#ffcd6b; --hulp-bg:#33280d; --focus:#b79bea; --actief-tekst:#131920;
   }
 }
 :root[data-thema="donker"]{
   --bg:#131920; --kaart:#1b232d; --tekst:#eef3f8; --zacht:#a9b7c6; --lijn:#2d3945;
-  --goed:#5ddcb0; --goed-bg:#11322a; --hulp:#ffcd6b; --hulp-bg:#33280d; --focus:#b79bea;
+  --goed:#5ddcb0; --goed-bg:#11322a; --hulp:#ffcd6b; --hulp-bg:#33280d; --focus:#b79bea; --actief-tekst:#131920;
 }
 *{box-sizing:border-box}
+[hidden]{display:none !important}
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0; background:var(--bg); color:var(--tekst);
@@ -35,8 +36,9 @@ body{
 }
 body[data-groot="ja"]{font-size:23px; line-height:1.8}
 .omhulsel{max-width:62rem; margin:0 auto; padding:0 16px}
-a{color:var(--purple)} :root[data-thema="donker"] a, @media (prefers-color-scheme:dark){a{color:var(--focus)}}
+a{color:var(--focus)}
 :focus-visible{outline:3px solid var(--focus); outline-offset:3px; border-radius:6px}
+header.kop :focus-visible{outline-color:#feca57}
 header.kop{background:var(--navy); color:#fff; padding:22px 0 26px}
 header.kop h1{margin:0 0 6px; font-size:clamp(1.4rem,1.2rem + 1.1vw,2rem); line-height:1.25}
 header.kop p{margin:0; color:#cfd9e4; max-width:48rem}
@@ -46,7 +48,7 @@ header.kop p{margin:0; color:#cfd9e4; max-width:48rem}
 button{font:inherit; cursor:pointer}
 .knop{background:var(--kaart); color:var(--tekst); border:2px solid var(--lijn); border-radius:999px; padding:9px 16px; min-height:44px}
 .knop:hover{border-color:var(--focus)}
-.knop[aria-pressed="true"]{background:var(--focus); border-color:var(--focus); color:#fff}
+.knop[aria-pressed="true"]{background:var(--focus); border-color:var(--focus); color:var(--actief-tekst)}
 .knop.hoofd{background:var(--purple); border-color:var(--purple); color:#fff; font-weight:700}
 .knop.hoofd:hover{filter:brightness(1.1)}
 main{padding:22px 0 60px}
@@ -86,9 +88,9 @@ footer{border-top:1px solid var(--lijn); padding:22px 0 40px; color:var(--zacht)
 <div class="omhulsel">
   <div class="balk" role="group" aria-label="Weergave-instellingen">
     <button class="knop" id="btn-groot" aria-pressed="false">Grotere letters</button>
-    <button class="knop" id="btn-thema">Donker / licht</button>
+    <button class="knop" id="btn-thema" aria-pressed="false">Donkere weergave</button>
     <button class="knop" id="btn-stop">Stop met voorlezen</button>
-    <span id="stem-status" style="color:var(--zacht); font-size:.88em"></span>
+    <span id="stem-status" role="status" style="color:var(--zacht); font-size:.88em"></span>
   </div>
 </div>
 
@@ -117,21 +119,21 @@ footer{border-top:1px solid var(--lijn); padding:22px 0 40px; color:var(--zacht)
     <div id="oefening" style="margin-top:20px">
       <span class="label" id="categorie">Basis</span>
       <div class="vraagkop">
-        <h2 id="woord">—</h2>
+        <h2 id="woord" tabindex="-1">—</h2>
         <button class="luid" id="lees-woord" aria-label="Lees de vraag voor">🔊</button>
       </div>
       <p id="vraagzin" style="color:var(--zacht); margin:.2em 0 1em"></p>
 
       <label for="antwoord" style="font-weight:700">Jouw antwoord</label>
-      <textarea id="antwoord" placeholder="Schrijf in je eigen woorden wat dit betekent."></textarea>
+      <textarea id="antwoord" aria-describedby="vraagzin" placeholder="Schrijf in je eigen woorden wat dit betekent."></textarea>
 
       <div class="rij">
         <button class="knop hoofd" id="btn-na">Nakijken</button>
-        <button class="knop" id="btn-voorbeeld">Toon voorbeeldantwoord</button>
+        <button class="knop" id="btn-voorbeeld" aria-controls="voorbeeld" aria-expanded="false">Toon voorbeeldantwoord</button>
         <button class="knop" id="btn-over" hidden>Volgende begrip</button>
       </div>
 
-      <div id="oordeel" class="oordeel" hidden aria-live="polite"></div>
+      <div id="oordeel" role="status" aria-atomic="true"></div>
 
       <div id="voorbeeld" class="voorbeeld" hidden>
         <div class="vraagkop">
@@ -140,14 +142,14 @@ footer{border-top:1px solid var(--lijn); padding:22px 0 40px; color:var(--zacht)
         </div>
         <p id="voorbeeldtekst"></p>
         <div class="rij">
-          <button class="knop" id="btn-wist">Ik wist het toch — reken het als juist</button>
+          <button class="knop" id="btn-wist">Ik wist het toch — noteer zelfcontrole</button>
           <button class="knop" id="btn-nogmaals">Zet dit begrip nog eens terug</button>
         </div>
       </div>
     </div>
 
     <div id="klaar" class="klaar" hidden>
-      <h2>Je bent rond.</h2>
+      <h2 id="klaarkop" tabindex="-1">Je bent rond.</h2>
       <p id="klaartekst"></p>
       <button class="knop hoofd" id="btn-opnieuw">Opnieuw beginnen</button>
     </div>
@@ -225,7 +227,7 @@ function start(vers){
   toon();
 }
 
-function toon(){
+function toon(verplaatsFocus = false){
   $("#klaar").hidden = true; $("#oefening").hidden = false;
   if(i >= rij.length){ return rond(); }
   const b = BEGRIPPEN[rij[i]];
@@ -234,7 +236,8 @@ function toon(){
   $("#woord").textContent = b.w;
   $("#vraagzin").textContent = b.vraag;
   $("#antwoord").value = ""; $("#antwoord").disabled = false;
-  $("#oordeel").hidden = true; $("#voorbeeld").hidden = true;
+  $("#oordeel").textContent = ""; $("#oordeel").className = ""; $("#voorbeeld").hidden = true;
+  $("#btn-voorbeeld").setAttribute("aria-expanded", "false");
   $("#btn-over").hidden = true; $("#btn-na").hidden = false;
   $("#btn-voorbeeld").textContent = "Toon voorbeeldantwoord";
   $("#voorbeeldtekst").textContent = b.voorbeeld;
@@ -242,6 +245,7 @@ function toon(){
   $("#herhaalteller").textContent = stats.herhaal ? `${stats.herhaal} keer teruggezet om te herhalen` : "";
   $("#staaf").style.width = Math.round(i/rij.length*100) + "%";
   bewaar();
+  if(verplaatsFocus) $("#woord").focus();
 }
 
 function nakijken(){
@@ -256,15 +260,18 @@ function nakijken(){
   beoordeeld = true;
   $("#btn-na").hidden = true; $("#btn-over").hidden = false; $("#antwoord").disabled = true;
   $("#voorbeeld").hidden = false;
+  $("#btn-voorbeeld").setAttribute("aria-expanded", "true");
+  $("#btn-voorbeeld").textContent = "Verberg voorbeeldantwoord";
+  $("#btn-over").focus();
   if(goed && !hulpGebruikt){
     stats.juist++;
-    melding("goed", "Dat klopt. Lees het voorbeeldantwoord er toch even bij — dan zie je hoe je het nog korter kunt zeggen.");
+    melding("goed", "Er zijn voldoende trefwoorden herkend. Vergelijk je antwoord met het voorbeeld: deze controle beoordeelt de betekenis niet.");
   } else if(goed && hulpGebruikt){
     stats.methulp++;
-    melding("hulp", "Juist, maar je hebt het voorbeeld er eerst bij genomen. Dit begrip komt straks nog een keer terug.");
+    melding("hulp", "Er zijn voldoende trefwoorden herkend, maar je hebt het voorbeeld er eerst bij genomen. Dit begrip komt straks nog een keer terug.");
     terugzetten();
   } else {
-    melding("hulp", "Nog niet volledig. Dit is een vakbegrip, dus het gaat om de juiste woorden, niet om jouw manier van schrijven. Lees het voorbeeld, zeg het daarna hardop in je eigen woorden.");
+    melding("hulp", "Er zijn onvoldoende trefwoorden herkend. Dat betekent niet automatisch dat je antwoord fout is. Lees het voorbeeld, zeg het daarna hardop in je eigen woorden.");
     terugzetten();
   }
   bewaar();
@@ -293,6 +300,7 @@ function rond(){
     `Zelfstandig juist: ${stats.juist}. Juist met hulp van het voorbeeld: ${stats.methulp}. ` +
     `Begrippen die daardoor opnieuw aan bod kwamen: ${stats.herhaal}. ` +
     `Alleen de eerste groep telt als "ken ik".`;
+  $("#klaarkop").focus();
   try{ localStorage.removeItem(KEY); }catch(e){}
 }
 
@@ -329,8 +337,8 @@ $("#lees-woord").addEventListener("click", ()=>{
 $("#lees-voorbeeld").addEventListener("click", ()=> lees($("#voorbeeldtekst").textContent));
 $("#btn-stop").addEventListener("click", ()=>{ if("speechSynthesis" in window) speechSynthesis.cancel(); });
 $("#btn-na").addEventListener("click", nakijken);
-$("#btn-over").addEventListener("click", ()=>{ i++; toon(); });
-$("#btn-opnieuw").addEventListener("click", ()=> start(true));
+$("#btn-over").addEventListener("click", ()=>{ i++; toon(true); });
+$("#btn-opnieuw").addEventListener("click", ()=>{ start(true); if(!$("#oefening").hidden) $("#woord").focus(); });
 $("#btn-voorbeeld").addEventListener("click", ()=>{
   const v = $("#voorbeeld");
   if(v.hidden){
@@ -345,6 +353,7 @@ $("#btn-voorbeeld").addEventListener("click", ()=>{
     v.hidden = true;
     $("#btn-voorbeeld").textContent = "Toon voorbeeldantwoord";
   }
+  $("#btn-voorbeeld").setAttribute("aria-expanded", String(!v.hidden));
 });
 $("#btn-wist").addEventListener("click", ()=>{
   if(!beoordeeld){ melding("hulp","Kijk eerst je eigen antwoord na."); return; }
@@ -364,7 +373,15 @@ $("#btn-thema").addEventListener("click", ()=>{
   const nu = document.documentElement.dataset.thema;
   const donker = window.matchMedia("(prefers-color-scheme: dark)").matches;
   document.documentElement.dataset.thema = nu ? (nu === "donker" ? "licht" : "donker") : (donker ? "licht" : "donker");
+  werkThemaknopBij();
 });
+function werkThemaknopBij(){
+  const thema = document.documentElement.dataset.thema;
+  const donker = thema ? thema === "donker" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  $("#btn-thema").setAttribute("aria-pressed", String(donker));
+}
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", werkThemaknopBij);
+werkThemaknopBij();
 document.addEventListener("keydown", e=>{
   if(e.key === "Enter" && (e.ctrlKey || e.metaKey)){
     e.preventDefault();
